@@ -87,3 +87,34 @@ linux 提取进程id以及结束该名称下的所有进程：
 	ps -aux|grep main.py| grep -v grep | awk '{print $2}' | xargs kill -9
 
 
+
+# centos安装chrome浏览器
+
+
+1.修改yum源
+
+2.在/etc/yum.repos.d/目录下新建文件google-chrome.repo，向其中添加如下内容:
+
+    [google-chrome]
+    
+    name=google-chrome
+    
+    baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+    
+    enabled=1
+    
+    gpgcheck=1
+    
+    gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+3.安装：
+
+    yum install google-chrome-stable
+    
+    注：Google官方源在国内可能无法正常访问，导致安装失败或安装后无法正常更新，可以尝试添加--nogpgcheck参数再安装。
+
+3(1): yum install google-chrome-stable --nogpgcheck
+
+或者可以尝试修改gpgcheck=0再安装。
+
+
